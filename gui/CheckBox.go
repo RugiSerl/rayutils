@@ -7,7 +7,7 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-// la CheckBox est une case à cocher
+// Checkbox is a button that be enabled or disabled
 type CheckBox struct {
 	value      *bool
 	HoverState bool
@@ -15,9 +15,8 @@ type CheckBox struct {
 	anchor     graphic.Anchor
 }
 
-var (
-	checkBoxRect graphic.Rect
-)
+// file scope var to get the on-screen position of the object
+var checkBoxRect graphic.Rect
 
 const (
 	CHECKBOX_SIZE = 100

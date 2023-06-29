@@ -20,9 +20,8 @@ type Slider struct {
 	size graphic.Vector2
 }
 
-var (
-	sliderRect graphic.Rect
-)
+// file scope var to get the on-screen position of the object
+var sliderRect graphic.Rect
 
 // Initialisation du slider
 func NewSlider(position graphic.Vector2, anchor graphic.Anchor) *Slider {

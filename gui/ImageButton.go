@@ -15,9 +15,8 @@ type ImageButton struct {
 	anchor       graphic.Anchor
 }
 
-var (
-	imageButtonPhysicalPosition graphic.Vector2
-)
+// file scope var to get the on-screen position of the object
+var imageButtonPhysicalPosition graphic.Vector2
 
 // Initialisation du bouton
 func NewImageButton(position graphic.Vector2, texture rl.Texture2D, anchor graphic.Anchor) *ImageButton {
