@@ -1,23 +1,31 @@
 package graphic
 
-// Fichier dans lequel on créer des ancres, elle permettent de fixer un rectangle , souvent associé à une texture, à un point et de calculer
-// les coordonnées de ces derniers avec cette information
+// anchor help to attach buttons, rect, or texture to a certain part of the screen.
+//
 
-//énumération des différentes ancres disponibles
-
+// Object representing a set of two anchor: one horizontal and vertical.
+// Those anchor types are defined as enum.
+// if X or Y are mixed, the resulting transormation will ignore the anchor.
 type Anchor struct {
 	X, Y int
 }
 
+// Type of anchor
 const (
+	//horizontal anchor
+
 	ANCHOR_LEFT = iota
 	ANCHOR_RIGHT
 	ANCHOR_HORIZONTAL_MiDDLE
+
+	//vertical anchor
+
 	ANCHOR_TOP
 	ANCHOR_BOTTOM
 	ANCHOR_VERTICAL_MiDDLE
 )
 
+// Get the position of a rect ()
 func GetRectCoordinatesWithAnchor(position Vector2, anchor Anchor, size Vector2, surfaceRect Rect) Vector2 {
 	var DestVector Vector2
 
