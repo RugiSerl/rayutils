@@ -71,7 +71,7 @@ func NewSetting(name string, componentType int, font rl.Font, fontSize float32, 
 
 // Fonction qui met à jour le paramètre
 func (s *Setting) Update(containingRect graphic.Rect) {
-	settingRect := graphic.NewRectFromVector(graphic.GetRectCoordinatesWithAnchor(s.position, s.anchor, s.size, containingRect), s.size)
+	settingRect := graphic.NewRectFromVector(graphic.GetRectCoordinatesWithAnchor(s.position, s.size, s.anchor, containingRect), s.size)
 
 	if graphic.DetectRectCollision(settingRect, graphic.GetMouseRect()) {
 		settingRect.Fill(rl.NewColor(128, 128, 128, 32), 0)

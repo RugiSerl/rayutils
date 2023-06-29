@@ -1,0 +1,4 @@
+TODO:
+-change Setting "interface" to actual golang interface
+-clean code
+-update documentation

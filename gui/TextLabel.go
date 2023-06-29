@@ -40,7 +40,7 @@ func Newlabel(text string, font rl.Font, fontSize float32, position graphic.Vect
 // Fonctions permettant d'afficher le texte
 func (l *TextLabel) Render(surfaceRect graphic.Rect) {
 
-	physicPosition := graphic.GetRectCoordinatesWithAnchor(l.position, l.anchor, l.size, surfaceRect)
+	physicPosition := graphic.GetRectCoordinatesWithAnchor(l.position, l.size, l.anchor, surfaceRect)
 	rl.DrawTextureRec(l.texture.Texture, rl.NewRectangle(0, 0, l.size.X, -l.size.Y), rl.Vector2(physicPosition), rl.White)
 
 }

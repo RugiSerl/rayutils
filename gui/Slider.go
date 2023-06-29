@@ -50,7 +50,7 @@ func (s *Slider) GetSize() graphic.Vector2 {
 
 // Fonction de mise à jour du slider
 func (s *Slider) Update(containingRect graphic.Rect) {
-	sliderRect = graphic.NewRectFromVector(graphic.GetRectCoordinatesWithAnchor(s.position, s.anchor, s.size, containingRect), s.size)
+	sliderRect = graphic.NewRectFromVector(graphic.GetRectCoordinatesWithAnchor(s.position, s.size, s.anchor, containingRect), s.size)
 
 	s.handleInput()
 	s.render()

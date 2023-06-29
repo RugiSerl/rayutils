@@ -38,7 +38,7 @@ func NewImageButton(position graphic.Vector2, texture rl.Texture2D, anchor graph
 
 // Fonction de mise à jour du bouton
 func (b *ImageButton) Update(containingRect graphic.Rect) {
-	imageButtonPhysicalPosition = graphic.GetRectCoordinatesWithAnchor(b.position, b.anchor, b.size.Scale(interfaceScale), containingRect)
+	imageButtonPhysicalPosition = graphic.GetRectCoordinatesWithAnchor(b.position, b.size.Scale(interfaceScale), b.anchor, containingRect)
 	b.handleInput()
 	b.render()
 }

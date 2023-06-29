@@ -33,7 +33,7 @@ func NewImageLabel(texture rl.Texture2D, position graphic.Vector2, anchor graphi
 // Fonctions permettant d'afficher le texte
 func (i *ImageLabel) Render(surfaceRect graphic.Rect) {
 
-	physicPosition := graphic.GetRectCoordinatesWithAnchor(i.position, i.anchor, i.size, surfaceRect)
+	physicPosition := graphic.GetRectCoordinatesWithAnchor(i.position, i.size, i.anchor, surfaceRect)
 	rl.DrawTextureEx(i.texture, rl.Vector2(physicPosition), 0, 1, rl.White)
 
 }
