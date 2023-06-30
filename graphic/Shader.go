@@ -1,21 +1,18 @@
 package graphic
 
-// Par Raphaël
-
 import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-// objet représentant un programme shader, qui rend plus facile son utilisation dans le programme
-
+// Object representing a shader program, make shader usage easier
 type Shader struct {
 	uniformLocations map[string]int32
 	Shader           rl.Shader
 }
 
-func InitShader(shaderPath string) *Shader {
+func InitShader(vertexShaderPath, fragmentShaderPath string) *Shader {
 	s := new(Shader)
-	s.Shader = rl.LoadShader("", shaderPath)
+	s.Shader = rl.LoadShader(vertexShaderPath, fragmentShaderPath)
 	s.uniformLocations = make(map[string]int32)
 	return s
 
@@ -42,10 +39,12 @@ func (s *Shader) setValue(uniformLocation int32, value any, uniformType rl.Shade
 
 }
 
+// Begin custom shader drawing.
 func (s *Shader) Begin() {
 	rl.BeginShaderMode(s.Shader)
 }
 
+// End custom shader drawing.
 func (s *Shader) End() {
 	rl.EndShaderMode()
 }

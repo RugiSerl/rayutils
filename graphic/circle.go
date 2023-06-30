@@ -18,7 +18,10 @@ func NewCircle(radius float32, x float32, y float32) Circle {
 
 }
 
-// Fonction permettant de détecter si deux Cercles se chevauchent.
+//---------------------
+// Collision methods
+
+// Detect if the two circles are overlapping.
 func (c *Circle) DetectCircleCollision(otherCircle Circle) bool {
 
 	return (c.CenterPosition.Substract(otherCircle.CenterPosition).GetNorm() <= c.Radius+otherCircle.Radius)
@@ -46,6 +49,9 @@ func (c *Circle) DetectRectCollision(rect Rect) bool {
 	return DetectPointRectCollision(c.CenterPosition, rect)
 
 }
+
+//---------------------
+// Draw methods
 
 // Draw a circle filled with a certain color, using the coordinates of the circle.
 func (c *Circle) Fill(color color.RGBA) {
