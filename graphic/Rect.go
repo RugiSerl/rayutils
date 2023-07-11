@@ -46,6 +46,37 @@ func GetMouseRect() Rect {
 	return NewRect(rl.GetMousePosition().X, rl.GetMousePosition().Y, 1, 1)
 }
 
+// Get new rect that keeps the same ratio and has the same size that the windows
+func GetRectAdjustedToWindow(rectRatio float32) Rect {
+
+	winW, winH := float32(rl.GetScreenWidth()), float32(rl.GetScreenHeight())
+	winRatio := winW / winH
+
+	r := Rect{}
+
+	if rectRatio > winRatio { //change Height
+		r.Width = winW
+		r.Height = winW / rectRatio
+		r.X = 0
+		r.Y = winH/2 - r.Height/2
+
+	} else if rectRatio < winRatio {
+		r.Height = winH
+		r.Width = winH * rectRatio
+		r.Y = 0
+		r.X = winW/2 - r.Width/2
+
+	} else {
+		r.X = 0
+		r.Y = 0
+		r.Height = winH
+		r.Width = winW
+	}
+
+	return r
+
+}
+
 // Get the rect inside another, with a certain padding.
 func GetInnerRect(sourceRect Rect, padding float32) Rect {
 	sourceRect.X += padding
@@ -66,6 +97,14 @@ func GetInnerHorizontalrect(sourceRect Rect, padding float32) Rect {
 // Get the position of the center of the rect.
 func (r Rect) GetCenter() Vector2 {
 	return r.GetPosition().Add(r.GetSize().Scale(0.5))
+}
+
+// Scale the rectangle while its center remains the same.
+func (r Rect) ScaleFromCenter(scale float32) Rect {
+	size := r.GetSize().Scale(scale)
+	position := r.GetPosition().Add(r.GetSize().Substract(size).Scale(0.5))
+
+	return NewRectFromVector(position, size)
 }
 
 //---------------------
