@@ -37,7 +37,7 @@ func NewImageButton(position graphic.Vector2, texture rl.Texture2D, anchor graph
 
 // Fonction de mise à jour du bouton
 func (b *ImageButton) Update(containingRect graphic.Rect) {
-	imageButtonPhysicalPosition = graphic.GetRectCoordinatesWithAnchor(b.position, b.size.Scale(interfaceScale), b.anchor, containingRect)
+	imageButtonPhysicalPosition = graphic.GetRectCoordinatesWithAnchor(b.position, b.size.Scale(InterfaceScale), b.anchor, containingRect)
 	b.handleInput()
 	b.render()
 }
@@ -45,7 +45,7 @@ func (b *ImageButton) Update(containingRect graphic.Rect) {
 // Fonction qui permet de gérer les inputs du bouton
 func (b *ImageButton) handleInput() {
 	b.HoverState, b.PressedState = false, false
-	if graphic.DetectRectCollision(graphic.GetMouseRect(), graphic.NewRectFromVector(imageButtonPhysicalPosition, b.size.Scale(interfaceScale))) {
+	if graphic.DetectRectCollision(graphic.GetMouseRect(), graphic.NewRectFromVector(imageButtonPhysicalPosition, b.size.Scale(InterfaceScale))) {
 		b.HoverState = true
 		if rl.IsMouseButtonPressed(rl.MouseLeftButton) {
 			b.PressedState = true
@@ -58,9 +58,9 @@ func (b *ImageButton) handleInput() {
 func (b *ImageButton) render() {
 
 	if b.HoverState {
-		rl.DrawTextureEx(b.img, rl.Vector2(imageButtonPhysicalPosition), 0, interfaceScale, rl.White)
+		rl.DrawTextureEx(b.img, rl.Vector2(imageButtonPhysicalPosition), 0, InterfaceScale, rl.White)
 	} else {
-		rl.DrawTextureEx(b.img, rl.Vector2(imageButtonPhysicalPosition), 0, interfaceScale, rl.NewColor(255, 255, 255, 120))
+		rl.DrawTextureEx(b.img, rl.Vector2(imageButtonPhysicalPosition), 0, InterfaceScale, rl.NewColor(255, 255, 255, 120))
 	}
 
 }

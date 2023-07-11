@@ -42,7 +42,7 @@ func (c *CheckBox) SetValue(value *bool) {
 
 // Fonction qui met à jour la checkbox
 func (c *CheckBox) Update(containingRect graphic.Rect) {
-	checkBoxRect = graphic.NewRectFromVector(graphic.GetRectCoordinatesWithAnchor(c.position, graphic.NewVector2(CHECKBOX_SIZE*interfaceScale, CHECKBOX_SIZE*interfaceScale), c.anchor, containingRect), graphic.NewVector2(CHECKBOX_SIZE*interfaceScale, CHECKBOX_SIZE*interfaceScale))
+	checkBoxRect = graphic.NewRectFromVector(graphic.GetRectCoordinatesWithAnchor(c.position, graphic.NewVector2(CHECKBOX_SIZE*InterfaceScale, CHECKBOX_SIZE*InterfaceScale), c.anchor, containingRect), graphic.NewVector2(CHECKBOX_SIZE*InterfaceScale, CHECKBOX_SIZE*InterfaceScale))
 
 	c.handleInput()
 	c.render()

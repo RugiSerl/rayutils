@@ -1,5 +1,6 @@
 package gui
 
 var (
-	interfaceScale float32 = 0.1
+	// Set the scale for the elements
+	InterfaceScale float32 = 0.1
 )

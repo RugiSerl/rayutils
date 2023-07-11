@@ -53,7 +53,7 @@ func NewSetting(name string, componentType int, font rl.Font, fontSize float32, 
 	switch componentType {
 	case TYPE_BOOL:
 		s.checkBox = NewCheckBox(graphic.NewVector2(0, 0), graphic.Anchor{X: graphic.ANCHOR_RIGHT, Y: graphic.ANCHOR_TOP})
-		s.size = s.size.Add(graphic.NewVector2(CHECKBOX_SIZE*interfaceScale, 0))
+		s.size = s.size.Add(graphic.NewVector2(CHECKBOX_SIZE*InterfaceScale, 0))
 
 	case TYPE_SLIDER:
 		s.slider = NewSlider(graphic.NewVector2(0, 0), graphic.Anchor{X: graphic.ANCHOR_RIGHT, Y: graphic.ANCHOR_TOP})
