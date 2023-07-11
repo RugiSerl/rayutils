@@ -72,3 +72,23 @@ func (v Vector2) FlattenToLine(lineAngle float64) Vector2 {
 func (v Vector2) ToRaylibVector2() rl.Vector2 {
 	return rl.NewVector2(v.X, v.Y)
 }
+
+// Returns (v1.x*v2.x, v.1.y*v.2.y)
+func (v Vector2) Multiply(otherVector Vector2) Vector2 {
+	return NewVector2(v.X*otherVector.X, v.Y*otherVector.Y)
+}
+
+// vector inverse -> no null vector
+func (v Vector2) Inverse() Vector2 {
+	return NewVector2(1/v.X, 1/v.Y)
+}
+
+// Normalize vector to another. So (v1.x/v2.x, v.1.y/v.2.y)
+func (v Vector2) NormalizeToVector(otherVector Vector2) Vector2 {
+	return v.Multiply(otherVector.Inverse())
+}
+
+// Normalize vector to originRect and multiply it by the size of the destRect
+func (v Vector2) NormalizeToRect(originRect Rect, destRect Rect) Vector2 {
+	return v.NormalizeToVector(originRect.GetSize()).Multiply(destRect.GetSize()).Add(destRect.GetPosition())
+}
