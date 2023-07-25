@@ -15,15 +15,20 @@ type Rect struct {
 }
 
 // Returns a new rect.
-func NewRect(x float32, y float32, width float32, height float32) Rect {
+func NewRect(x, y, width, height float32) Rect {
 	r := Rect{}
 	r.X, r.Y, r.Width, r.Height = x, y, width, height
 	return r
 }
 
 // Returns a new rect, using vectors.
-func NewRectFromVector(position Vector2, size Vector2) Rect {
+func NewRectFromVector(position, size Vector2) Rect {
 	return Rect{X: position.X, Y: position.Y, Width: size.X, Height: size.Y}
+}
+
+// Returns a new rect, using vectors.
+func NewRectFromCenter(center, size Vector2) Rect {
+	return NewRectFromVector(center.Substract(size.Scale(0.5)), size)
 }
 
 // Get the position of the rect.
@@ -111,7 +116,7 @@ func (r Rect) ScaleFromCenter(scale float32) Rect {
 // Collision methods
 
 // Detect if two rectangles overlap.
-func DetectRectCollision(rect1 Rect, rect2 Rect) bool {
+func DetectRectCollision(rect1, rect2 Rect) bool {
 	return (rect1.X+rect1.Width >= rect2.X && rect1.X <= rect2.X+rect2.Width && rect1.Y+rect1.Height >= rect2.Y && rect1.Y <= rect2.Y+rect2.Height)
 }
 
