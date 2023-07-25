@@ -41,6 +41,16 @@ func (r Rect) GetSize() Vector2 {
 	return NewVector2(r.Width, r.Height)
 }
 
+// Return the rect with position modified.
+func (r Rect) WithPosition(pos Vector2) Rect {
+	return NewRectFromVector(pos, r.GetSize())
+}
+
+// Return the rect with size modified.
+func (r Rect) WithSize(size Vector2) Rect {
+	return NewRectFromVector(r.GetPosition(), size)
+}
+
 // Get the rect representing the window, with position (0, 0) and size (wWidth, wHeight).
 func GetWindowRect() Rect {
 	return NewRect(0, 0, float32(rl.GetScreenWidth()), float32(rl.GetScreenHeight()))
